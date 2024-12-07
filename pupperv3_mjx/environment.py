@@ -329,7 +329,8 @@ class PupperV3Env(PipelineEnv):
         )
         # rotate the z unit vector by pitch and roll
         # euler_to_quat uses x-y'-z'' intrinsic convention so use roll, pitch, yaw
-        euler_rotation = math.euler_to_quat(jp.array([roll[0], pitch[0], 0.0]))
+        #euler_rotation = math.euler_to_quat(jp.array([roll[0], pitch[0], 0.0]))
+        euler_rotation = math.euler_to_quat(jp.array([0.0, 0.0, 0.0]))
         desired_world_z_in_body_frame = math.rotate(
             self._desired_world_z_in_body_frame, euler_rotation
         )
