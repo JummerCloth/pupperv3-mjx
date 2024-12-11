@@ -81,8 +81,7 @@ def add_stairs_to_model(
     """
     worldbody = tree.find("worldbody")
     for i in range(num_stairs):
-        print('now it is modified')
-        stair_x_pos = -x_start - i * stair_width
+        stair_x_pos = x_start + i * stair_width
         stair_z_pos = (i + 1) * stair_height
 
         # Add a body for each stair
