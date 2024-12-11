@@ -7,7 +7,7 @@ from typing import Tuple
 def domain_randomize(
     sys,
     rng,
-    friction_range: Tuple = (0.6, 1.4),
+    friction_range: Tuple = (2.0, 2.5),
     kp_multiplier_range: Tuple = (0.75, 1.25),
     kd_multiplier_range: Tuple = (0.5, 2.0),
     body_com_x_shift_range: Tuple = (-0.03, 0.03),
@@ -117,7 +117,7 @@ class StartPositionRandomization:
 
 def random_z_rotation_quaternion(rng):
     """Generates a random quaternion with a random yaw angle."""
-    yaw = jax.random.uniform(rng, (1,), minval=-jp.pi, maxval=jp.pi)
+    yaw = jax.random.uniform(rng, (1,), minval=-jp.pi/32, maxval=jp.pi/32)
     cos_yaw = jp.cos(yaw / 2)
     sin_yaw = jp.sin(yaw / 2)
     return jp.concatenate((cos_yaw, jp.zeros(2), sin_yaw))
